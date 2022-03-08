@@ -100,11 +100,12 @@ VOID Render()
 
         g_pd3dDevice->CreateOffscreenPlainSurface(200, 200, D3DFMT_X8R8G8B8, D3DPOOL_SYSTEMMEM, &Surface, NULL);
 
-        D3DXLoadSurfaceFromFile(Surface, NULL, NULL, "C:\\Users\\radvo\\Downloads\\bmp_24.bmp", NULL, D3DX_FILTER_NONE, 0, NULL);
+        D3DXLoadSurfaceFromFile(Surface, NULL, NULL, "C:\\Users\\radvo\\Downloads\\globe.bmp", NULL, D3DX_FILTER_NONE, 0, NULL);
 
         IDirect3DSurface9* BackBuffer = NULL;
         g_pd3dDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &BackBuffer);
         g_pd3dDevice->UpdateSurface(Surface, NULL, BackBuffer, NULL);
+        
         // End the scene
         g_pd3dDevice->EndScene();
     }
@@ -149,6 +150,8 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR, INT )
     HWND hWnd = CreateWindow( "D3D Tutorial", "D3D Tutorial 01: CreateDevice", 
                               WS_OVERLAPPEDWINDOW, 100, 100, 300, 300,
                               GetDesktopWindow(), NULL, wc.hInstance, NULL );
+
+    
 
     // Initialize Direct3D
     if( SUCCEEDED( InitD3D( hWnd ) ) )
